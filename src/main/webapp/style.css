@@ -1,0 +1,134 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+    background: #29303A;
+}
+
+.header {
+    display: flex;
+    padding: 30px 5%;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0,0,0,.1);
+}
+
+.header__logo {
+    font: 700 25px 'Montserrat', sans-serif;
+    color: #D0992E;
+}
+
+.logo__text {
+    margin: 0;
+}
+
+.logo__text--grey {
+    font-weight: 400;
+    color: #CACACA;
+}
+
+.auth__button {
+    font: 700 16px Helvetica, sans-serif;
+    padding: 8px 25px;
+    margin-left: 10px;
+    border: 2px solid;
+    border-radius: 19px;
+    cursor: pointer;
+}
+
+.auth__button--sign-in {
+    background: #29303A;
+    color: #D0992E;
+    border-color: #D0992E;
+}
+
+.auth__button--sign-up {
+    background: #D0992E;
+    color: #29303A;
+    border-color: #D0992E;
+}
+
+.main {
+    padding: 30px 5%;
+}
+
+.pagination__list {
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.pagination__item {
+    margin-right: 8px;
+    height: 30px;
+    border: #D0992E;
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font: 700 16px Helvetica, sans-serif;
+    border-radius: 50%;
+    background: #D0992E;
+    color: #29303A;
+}
+
+.pagination__item--active {
+    background: #CACACA;
+    border: #CACACA;
+}
+
+.main__cars {
+    display: flex;
+    justify-content: space-between;
+    margin: 30px 0;
+}
+
+.car {
+    height: 470px;
+    width: 300px;
+    border-radius: 10px;
+    box-shadow: 0 0 30px rgba(0,0,0,.3);
+    display: flex;
+    flex-direction: column;
+}
+
+.car__image {
+    height: 200px;
+    width: 300px;
+    border-radius: 10px 10px 0 0;
+}
+
+.car__title {
+    margin: 10px;
+    font: 700 20px 'Montserrat', sans-serif;
+    color: #D0992E;
+}
+
+.car__description {
+    margin: 0 10px;
+    font: 400 16px Helvetica, sans-serif;
+    color: #CACACA;
+}
+
+.car__rent {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.car__button {
+    padding: 5px 20px;
+    border-radius: 10px;
+    background: none;
+    cursor: pointer;
+    border: 2px solid #D0992E;
+    font: 400 16px Helvetica, sans-serif;
+    color: #D0992E;
+}
+
+.modal {
+    display: none;
+}
