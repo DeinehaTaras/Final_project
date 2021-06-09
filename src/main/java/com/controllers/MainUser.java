@@ -1,4 +1,4 @@
-package com.controller;
+package com.controllers;
 
 import com.DAO.DAOImpl;
 import com.entity.Car;
