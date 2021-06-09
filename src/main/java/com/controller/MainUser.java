@@ -1,31 +1,25 @@
 package com.controller;
 
-import com.DAOImpl;
+import com.DAO.DAOImpl;
 import com.entity.Car;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(value = "/mainUser")
-public class mainUser extends HttpServlet {
+public class MainUser extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
         int number = 4;
         int brandNum = 0;
-        String back = req.getParameter("back");
         String pageNum1 = req.getParameter("pageNum1");
         String pageNum2 = req.getParameter("pageNum2");
         String pageNum3 = req.getParameter("pageNum3");
-        String forward = req.getParameter("forward");
         if (pageNum1 != null) {
             number = 4;
             brandNum = 0;
@@ -43,11 +37,7 @@ public class mainUser extends HttpServlet {
         }
         DAOImpl dao = new DAOImpl();
         List<Car> cars = null;
-        try {
-            cars = dao.checkCars();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
+        cars = dao.checkCars();
         for (int i = number - 4; i < number; i++) {
             req.setAttribute("brand" + (i + 1 - brandNum), cars.get(i).getBrand());
             req.setAttribute("model" + (i + 1 - brandNum), cars.get(i).getModel());
@@ -55,6 +45,8 @@ public class mainUser extends HttpServlet {
             req.setAttribute("color" + (i + 1 - brandNum), cars.get(i).getColor());
             req.setAttribute("price" + (i + 1 - brandNum), cars.get(i).getPrice());
             req.setAttribute("image" + (i + 1 - brandNum), cars.get(i).getImage());
+            req.setAttribute("comfortClass" + (i + 1 - brandNum), cars.get(i).getComfortClass());
+            req.setAttribute("status" + (i + 1 - brandNum), cars.get(i).getStatus());
         }
         try {
             req.getRequestDispatcher("/mainUser.jsp").forward(req, resp);

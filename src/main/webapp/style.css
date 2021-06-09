@@ -132,3 +132,14 @@ body {
 .modal {
     display: none;
 }
+
+.userName{
+    margin: 10px;
+    font: 700 20px 'Montserrat', sans-serif;
+    color: #CACACA;
+}
+
+.user__image{
+    height: 25px;
+    width: 25px;
+}

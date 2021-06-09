@@ -2,51 +2,57 @@
 <!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
-    <title>Регистрация</title>
+    <title>Car rental | Sign up</title>
 </head>
 <body>
 
-<h1 align="center">Регистрация</h1>
+<h1 align="center">Sign up</h1>
 
 <form action = "registration" method="post">
 
     <label for="surname" style="position:fixed;
         top: 95px;
-        left:430px;
-        font-size: xx-large">Фамилия :</label>
+        left:385px;
+        font-size: xx-large">Surname :</label>
     <input type="text" name="surname" id="surname" value="" class=c required>
 
     <label for="name" style="position:fixed;
         top: 160px;
-        left:430px;
-        font-size: xx-large">Имя: </label>
+        left:385px;
+        font-size: xx-large">Name: </label>
     <input type="text" name="name" id="name" value="" class=c2 required>
 
     <label for="secondName" style="position:fixed;
         top: 225px;
-        left:430px;
-        font-size: xx-large">Отчество: </label>
+        left:385px;
+        font-size: xx-large">Second name: </label>
     <input type="text" name="secondName" id="secondName" value="" class=c3 required>
 
-    <label for="phoneNumber" style="position:fixed;
+    <label for="date" style="position:fixed;
         top: 285px;
-        left:430px;
-        font-size: xx-large">Номер телефона: </label>
-    <input type="text" name="phoneNumber" id="phoneNumber" value="" class=c4>
+        left:385px;
+        font-size: xx-large">Date of birth: </label>
+    <input type="date" name="date" id="date" value="2021-06-09" class=c4 required>
+
+    <label for="phoneNumber" style="position:fixed;
+        top: 345px;
+        left:385px;
+        font-size: xx-large">Phone number: </label>
+    <input type="text" name="phoneNumber" id="phoneNumber" value="" class=c5>
 
     <label for="login" style="position:fixed;
-        top: 345px;
-        left:430px;
-        font-size: xx-large">Логин: </label>
-    <input type="text" name="login" id="login" value="" class=c5 required>
+        top: 410px;
+        left:385px;
+        font-size: xx-large">Login: </label>
+    <input type="text" name="login" id="login" value="" class=c6 required>
 
     <label for="password" style="position:fixed;
-        top: 410px;
-        left:430px;
-        font-size: xx-large">Пароль: </label>
-    <input type="password" name="password" id="password" value="" class=c6 required>
+        top: 475px;
+        left:385px;
+        font-size: xx-large">Password: </label>
+    <input type="password" name="password" id="password" value="" class=c7 required>
 
-    <input type="submit" name="signup" class=c7 value="Зарегистрироваться ">
+    <input type="submit" name="signup" class=c8 value="Submit ">
 </form>
 </body>
 
@@ -114,6 +120,15 @@
         font-size: large;
         position: fixed;
         top: 483px;
+        left: 570px;
+        height: 55px;
+        width: 250px
+    }
+    .c8 {
+        font-weight: 800;
+        font-size: large;
+        position: fixed;
+        top: 551px;
         left: 570px;
         height: 55px;
         width: 250px
