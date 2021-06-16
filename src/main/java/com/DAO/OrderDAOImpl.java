@@ -63,6 +63,7 @@ public class OrderDAOImpl {
                 carStatus = Integer.parseInt(resultSet1.getString("isFree"));
                 if (carStatus == 0) {
                     req.getRequestDispatcher("/carIsBusy.jsp").forward(req, resp);
+                    return;
                 }
                 price = Integer.parseInt(resultSet1.getString("price"));
             }

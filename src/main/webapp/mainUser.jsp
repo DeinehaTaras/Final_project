@@ -30,15 +30,15 @@
                 <button name="pageNum2" id="pageNum2" value="2" class="pagination__item ${active__item2}">2</button>
                 <button name="pageNum3" id="pageNum3" value="2" class="pagination__item ${active__item3}">3</button>
                 <form action="mainUser" method="post">
-                    <button class="car__button" name="sortButton1" value="sort1">Sort A-Z</button>
+                    <button class="car__button" style="margin-right: 8px" name="sortButton1" value="sort1">Sort A-Z</button>
 
                 </form>
                 <form action="mainUser" method="post">
-                    <button class="car__button" name="sortButton2" value="sort2">Sort by price (cheap to expensive)</button>
+                    <button class="car__button" style="margin-right: 8px" name="sortButton2" value="sort2">Sort by price (cheap to expensive)</button>
 
                 </form>
                 <form action="mainUser" method="post">
-                    <button class="car__button" name="sortButton3" value="sort3">Sort by class comfort (A-S)</button>
+                    <button class="car__button" style="margin-right: 8px" name="sortButton3" value="sort3">Sort by class comfort (A-S)</button>
 
                 </form>
             </ul>

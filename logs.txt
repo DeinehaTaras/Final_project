@@ -458,3 +458,124 @@
 2021-06-17 01:36:00 INFO  ConnectionDB:22 - Connect to database: jdbc:mysql://localhost:3306/carRental?
 2021-06-17 01:36:00 INFO  ConnectionDB:112 - Checking cars in database
 2021-06-17 01:36:02 INFO  SignIn:63 - taras logging
+2021-06-17 02:06:46 INFO  ConnectionDB:22 - Connect to database: jdbc:mysql://localhost:3306/carRental?
+2021-06-17 02:06:50 INFO  ConnectionDB:72 - Retrieving user data from database...
+2021-06-17 02:06:50 INFO  ConnectionDB:22 - Connect to database: jdbc:mysql://localhost:3306/carRental?
+2021-06-17 02:06:50 INFO  ConnectionDB:112 - Checking cars in database
+2021-06-17 02:06:51 INFO  SignIn:63 - vlados logging
+2021-06-17 02:07:03 INFO  ConnectionDB:22 - Connect to database: jdbc:mysql://localhost:3306/carRental?
+2021-06-17 02:07:03 INFO  ConnectionDB:106 - Adding order to database
+2021-06-17 02:07:03 INFO  ConnectionDB:117 - Update car info
+2021-06-17 02:07:04 INFO  ConnectionDB:129 - Adding passport info to database
+2021-06-17 02:07:05 INFO  ConnectionDB:22 - Connect to database: jdbc:mysql://localhost:3306/carRental?
+2021-06-17 02:07:05 INFO  ConnectionDB:112 - Checking cars in database
+2021-06-17 02:10:38 INFO  ConnectionDB:22 - Connect to database: jdbc:mysql://localhost:3306/carRental?
+2021-06-17 02:10:41 INFO  ConnectionDB:72 - Retrieving user data from database...
+2021-06-17 02:10:42 INFO  ConnectionDB:22 - Connect to database: jdbc:mysql://localhost:3306/carRental?
+2021-06-17 02:10:42 INFO  ConnectionDB:112 - Checking cars in database
+2021-06-17 02:10:43 INFO  SignIn:63 - vlados logging
+2021-06-17 02:11:00 INFO  ConnectionDB:22 - Connect to database: jdbc:mysql://localhost:3306/carRental?
+2021-06-17 02:11:02 INFO  ConnectionDB:22 - Connect to database: jdbc:mysql://localhost:3306/carRental?
+2021-06-17 02:11:02 INFO  ConnectionDB:112 - Checking cars in database
+2021-06-17 02:11:46 INFO  ConnectionDB:22 - Connect to database: jdbc:mysql://localhost:3306/carRental?
+2021-06-17 02:11:46 INFO  ConnectionDB:72 - Retrieving user data from database...
+2021-06-17 02:11:46 INFO  ConnectionDB:22 - Connect to database: jdbc:mysql://localhost:3306/carRental?
+2021-06-17 02:11:46 INFO  ConnectionDB:112 - Checking cars in database
+2021-06-17 02:11:46 INFO  SignIn:63 - vlad logging
+2021-06-17 02:11:54 INFO  ConnectionDB:22 - Connect to database: jdbc:mysql://localhost:3306/carRental?
+2021-06-17 02:11:54 INFO  ConnectionDB:72 - Retrieving user data from database...
+2021-06-17 02:11:55 INFO  SignIn:63 - taras logging
+2021-06-17 02:12:00 INFO  ConnectionDB:22 - Connect to database: jdbc:mysql://localhost:3306/carRental?
+2021-06-17 02:12:00 INFO  ConnectionDB:72 - Retrieving user data from database...
+2021-06-17 02:12:00 INFO  ConnectionDB:22 - Connect to database: jdbc:mysql://localhost:3306/carRental?
+2021-06-17 02:12:00 INFO  ConnectionDB:112 - Checking cars in database
+2021-06-17 02:12:01 INFO  SignIn:63 - taras logging
+2021-06-17 02:15:17 INFO  ConnectionDB:22 - Connect to database: jdbc:mysql://localhost:3306/carRental?
+2021-06-17 02:15:21 INFO  ConnectionDB:72 - Retrieving user data from database...
+2021-06-17 02:15:21 INFO  ConnectionDB:22 - Connect to database: jdbc:mysql://localhost:3306/carRental?
+2021-06-17 02:15:21 INFO  ConnectionDB:112 - Checking cars in database
+2021-06-17 02:15:22 INFO  SignIn:63 - taras logging
+2021-06-17 02:16:40 INFO  ConnectionDB:22 - Connect to database: jdbc:mysql://localhost:3306/carRental?
+2021-06-17 02:16:43 INFO  ConnectionDB:72 - Retrieving user data from database...
+2021-06-17 02:16:43 INFO  ConnectionDB:22 - Connect to database: jdbc:mysql://localhost:3306/carRental?
+2021-06-17 02:16:43 INFO  ConnectionDB:112 - Checking cars in database
+2021-06-17 02:16:46 INFO  SignIn:63 - taras logging
+2021-06-17 02:18:15 INFO  ConnectionDB:22 - Connect to database: jdbc:mysql://localhost:3306/carRental?
+2021-06-17 02:18:18 INFO  ConnectionDB:72 - Retrieving user data from database...
+2021-06-17 02:18:18 INFO  ConnectionDB:22 - Connect to database: jdbc:mysql://localhost:3306/carRental?
+2021-06-17 02:18:18 INFO  ConnectionDB:112 - Checking cars in database
+2021-06-17 02:18:19 INFO  SignIn:63 - taras logging
+2021-06-17 02:18:32 INFO  ConnectionDB:22 - Connect to database: jdbc:mysql://localhost:3306/carRental?
+2021-06-17 02:18:33 INFO  ConnectionDB:72 - Retrieving user data from database...
+2021-06-17 02:18:33 INFO  ConnectionDB:22 - Connect to database: jdbc:mysql://localhost:3306/carRental?
+2021-06-17 02:18:33 INFO  ConnectionDB:112 - Checking cars in database
+2021-06-17 02:18:34 INFO  SignIn:63 - vlad logging
+2021-06-17 02:20:19 INFO  ConnectionDB:22 - Connect to database: jdbc:mysql://localhost:3306/carRental?
+2021-06-17 02:20:22 INFO  ConnectionDB:72 - Retrieving user data from database...
+2021-06-17 02:20:22 INFO  ConnectionDB:22 - Connect to database: jdbc:mysql://localhost:3306/carRental?
+2021-06-17 02:20:22 INFO  ConnectionDB:112 - Checking cars in database
+2021-06-17 02:20:24 INFO  SignIn:63 - vlad logging
+2021-06-17 02:20:28 INFO  ConnectionDB:22 - Connect to database: jdbc:mysql://localhost:3306/carRental?
+2021-06-17 02:20:28 INFO  ConnectionDB:112 - Checking cars in database
+2021-06-17 02:20:31 INFO  ConnectionDB:22 - Connect to database: jdbc:mysql://localhost:3306/carRental?
+2021-06-17 02:20:31 INFO  ConnectionDB:112 - Checking cars in database
+2021-06-17 02:20:33 INFO  ConnectionDB:22 - Connect to database: jdbc:mysql://localhost:3306/carRental?
+2021-06-17 02:20:33 INFO  ConnectionDB:112 - Checking cars in database
+2021-06-17 02:20:38 INFO  ConnectionDB:22 - Connect to database: jdbc:mysql://localhost:3306/carRental?
+2021-06-17 02:20:38 INFO  ConnectionDB:112 - Checking cars in database
+2021-06-17 02:20:39 INFO  ConnectionDB:22 - Connect to database: jdbc:mysql://localhost:3306/carRental?
+2021-06-17 02:20:39 INFO  ConnectionDB:112 - Checking cars in database
+2021-06-17 02:20:46 INFO  ConnectionDB:22 - Connect to database: jdbc:mysql://localhost:3306/carRental?
+2021-06-17 02:20:46 INFO  ConnectionDB:72 - Retrieving user data from database...
+2021-06-17 02:20:46 INFO  ConnectionDB:22 - Connect to database: jdbc:mysql://localhost:3306/carRental?
+2021-06-17 02:20:46 INFO  ConnectionDB:112 - Checking cars in database
+2021-06-17 02:20:47 INFO  SignIn:63 - taras logging
+2021-06-17 02:20:49 INFO  ConnectionDB:22 - Connect to database: jdbc:mysql://localhost:3306/carRental?
+2021-06-17 02:20:49 INFO  ConnectionDB:112 - Checking cars in database
+2021-06-17 02:20:50 INFO  ConnectionDB:22 - Connect to database: jdbc:mysql://localhost:3306/carRental?
+2021-06-17 02:20:50 INFO  ConnectionDB:112 - Checking cars in database
+2021-06-17 02:20:52 INFO  ConnectionDB:22 - Connect to database: jdbc:mysql://localhost:3306/carRental?
+2021-06-17 02:20:52 INFO  ConnectionDB:112 - Checking cars in database
+2021-06-17 02:21:03 INFO  ConnectionDB:22 - Connect to database: jdbc:mysql://localhost:3306/carRental?
+2021-06-17 02:21:03 INFO  ConnectionDB:72 - Retrieving user data from database...
+2021-06-17 02:21:03 INFO  ConnectionDB:22 - Connect to database: jdbc:mysql://localhost:3306/carRental?
+2021-06-17 02:21:03 INFO  ConnectionDB:112 - Checking cars in database
+2021-06-17 02:21:04 INFO  SignIn:63 - anton logging
+2021-06-17 02:21:08 INFO  ConnectionDB:22 - Connect to database: jdbc:mysql://localhost:3306/carRental?
+2021-06-17 02:21:08 INFO  ConnectionDB:112 - Checking cars in database
+2021-06-17 02:21:09 INFO  ConnectionDB:22 - Connect to database: jdbc:mysql://localhost:3306/carRental?
+2021-06-17 02:21:09 INFO  ConnectionDB:112 - Checking cars in database
+2021-06-17 02:21:10 INFO  ConnectionDB:22 - Connect to database: jdbc:mysql://localhost:3306/carRental?
+2021-06-17 02:21:10 INFO  ConnectionDB:112 - Checking cars in database
+2021-06-17 02:21:24 INFO  ConnectionDB:22 - Connect to database: jdbc:mysql://localhost:3306/carRental?
+2021-06-17 02:21:24 INFO  ConnectionDB:72 - Retrieving user data from database...
+2021-06-17 02:21:24 INFO  ConnectionDB:22 - Connect to database: jdbc:mysql://localhost:3306/carRental?
+2021-06-17 02:21:24 INFO  ConnectionDB:112 - Checking cars in database
+2021-06-17 02:21:24 INFO  SignIn:63 - taras logging
+2021-06-17 02:21:27 INFO  ConnectionDB:22 - Connect to database: jdbc:mysql://localhost:3306/carRental?
+2021-06-17 02:21:27 INFO  ConnectionDB:112 - Checking cars in database
+2021-06-17 02:21:28 INFO  ConnectionDB:22 - Connect to database: jdbc:mysql://localhost:3306/carRental?
+2021-06-17 02:21:28 INFO  ConnectionDB:112 - Checking cars in database
+2021-06-17 02:21:30 INFO  ConnectionDB:22 - Connect to database: jdbc:mysql://localhost:3306/carRental?
+2021-06-17 02:21:30 INFO  ConnectionDB:112 - Checking cars in database
+2021-06-17 02:21:33 INFO  ConnectionDB:22 - Connect to database: jdbc:mysql://localhost:3306/carRental?
+2021-06-17 02:21:33 INFO  ConnectionDB:112 - Checking cars in database
+2021-06-17 02:21:37 INFO  ConnectionDB:22 - Connect to database: jdbc:mysql://localhost:3306/carRental?
+2021-06-17 02:21:37 INFO  ConnectionDB:112 - Checking cars in database
+2021-06-17 02:21:37 INFO  ConnectionDB:22 - Connect to database: jdbc:mysql://localhost:3306/carRental?
+2021-06-17 02:21:37 INFO  ConnectionDB:112 - Checking cars in database
+2021-06-17 02:21:40 INFO  ConnectionDB:22 - Connect to database: jdbc:mysql://localhost:3306/carRental?
+2021-06-17 02:21:40 INFO  ConnectionDB:112 - Checking cars in database
+2021-06-17 02:26:00 INFO  ConnectionDB:22 - Connect to database: jdbc:mysql://localhost:3306/carRental?
+2021-06-17 02:26:05 INFO  ConnectionDB:72 - Retrieving user data from database...
+2021-06-17 02:26:05 INFO  ConnectionDB:22 - Connect to database: jdbc:mysql://localhost:3306/carRental?
+2021-06-17 02:26:05 INFO  ConnectionDB:112 - Checking cars in database
+2021-06-17 02:26:07 INFO  SignIn:63 - taras logging
+2021-06-17 02:26:34 INFO  ConnectionDB:22 - Connect to database: jdbc:mysql://localhost:3306/carRental?
+2021-06-17 02:26:34 INFO  ConnectionDB:80 - Changing color
+2021-06-17 02:26:34 INFO  ConnectionDB:22 - Connect to database: jdbc:mysql://localhost:3306/carRental?
+2021-06-17 02:26:34 INFO  ConnectionDB:112 - Checking cars in database
+2021-06-17 02:26:42 INFO  ConnectionDB:22 - Connect to database: jdbc:mysql://localhost:3306/carRental?
+2021-06-17 02:26:42 INFO  ConnectionDB:80 - Changing color
+2021-06-17 02:26:42 INFO  ConnectionDB:22 - Connect to database: jdbc:mysql://localhost:3306/carRental?
+2021-06-17 02:26:42 INFO  ConnectionDB:112 - Checking cars in database

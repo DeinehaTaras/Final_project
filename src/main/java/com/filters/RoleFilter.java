@@ -32,7 +32,11 @@ public class RoleFilter implements Filter {
                 || uri.endsWith("banUser.jsp")
                 || uri.endsWith("createManager.jsp")
                 || uri.endsWith("removeCar.jsp")
-                || uri.endsWith("unbanUser.jsp"))) {
+                || uri.endsWith("unbanUser.jsp")
+                || uri.endsWith("changeColor.jsp")
+                || uri.endsWith("changeImage.jsp")
+                || uri.endsWith("changePrice.jsp")
+                || uri.endsWith("modifyCar.jsp"))) {
             httpServletResponse.sendRedirect("index.jsp");
         } else if (manager != 1 && (uri.endsWith("mainManager.jsp")
                 || uri.endsWith("approveOrDecline.jsp")
