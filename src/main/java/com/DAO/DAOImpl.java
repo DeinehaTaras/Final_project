@@ -55,8 +55,7 @@ public class DAOImpl {
         System.out.println("Adding to database");
     }
 
-    public static boolean login(HttpServletRequest req, HttpServletResponse resp) {
-
+    public static boolean login(HttpServletRequest req, HttpServletResponse resp, HttpSession session) {
         String loginStr = req.getParameter("login");
         String passStr = req.getParameter("password");
         String query = "SELECT * FROM users WHERE login = '" + loginStr + "'";
@@ -75,6 +74,8 @@ public class DAOImpl {
         try {
             while (resultSet.next()) {
                 if (resultSet.getString("login").equals(loginStr) && resultSet.getString("password").equals(passStr)) {
+                    session.setAttribute("admin", resultSet.getString("isAdmin"));
+                    session.setAttribute("manager", resultSet.getString("isManager"));
                     return true;
                 } else
                     return false;
@@ -122,30 +123,90 @@ public class DAOImpl {
         return carList;
     }
 
-    public static void makeOrder(HttpServletRequest req, HttpServletResponse resp, HttpSession session) {
+    public static void ban(HttpServletRequest req, HttpServletResponse resp) {
+    int userId = Integer.parseInt(req.getParameter("userId"));
+    String query = "UPDATE users SET isBanned = " + 1 + " WHERE userId = " + userId;
+        Statement statement = null;
+        try {
+            statement = c.createStatement();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        try {
+            assert statement != null;
+            statement.executeUpdate(query);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        System.out.println("Banning user in database");
+    }
+
+    public static void unban(HttpServletRequest req, HttpServletResponse resp) {
+        int userId = Integer.parseInt(req.getParameter("userId"));
+        String query = "UPDATE users SET isBanned = " + 0 + " WHERE userId = " + userId;
+        Statement statement = null;
+        try {
+            statement = c.createStatement();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        try {
+            assert statement != null;
+            statement.executeUpdate(query);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        System.out.println("Unbanning user in database");
+    }
+
+    public static void appoint(HttpServletRequest req, HttpServletResponse resp) {
+        int userId = Integer.parseInt(req.getParameter("userId"));
+        String query = "UPDATE users SET isManager = " + 1 + " WHERE userId = " + userId;
+        Statement statement = null;
+        try {
+            statement = c.createStatement();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        try {
+            assert statement != null;
+            statement.executeUpdate(query);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        System.out.println("Appointing a manager");
+    }
+
+    public static void createManager(HttpServletRequest req, HttpServletResponse resp) {
         try {
             req.setCharacterEncoding("UTF-8");
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-        String seriesStr = req.getParameter("series__passport");
-        String nameStr = session.getAttribute("userName").toString();
-        String numberStr = req.getParameter("number__passport");
-        String timeStr = req.getParameter("time");
-        String flag = Arrays.toString(req.getParameterValues("driver"));
-        String flag2 = Arrays.toString(req.getParameterValues("driver2"));
-        System.out.println(seriesStr + " " + nameStr + " " + numberStr + " " + timeStr + " | " + flag + " | " + flag2);
-        // String query = "INSERT INTO orders (Surname, name, secondName, phone_number, login, password) \n" +
-        //     "   VALUES ('" + surnameStr +"', '" + nameStr + "', '" + secondNameStr + "', '" + phoneNumberStr +
-        //   "', '" + loginStr + "', '" + passStr + "')";
+        String surnameStr = req.getParameter("surname");
+        String nameStr = req.getParameter("name");
+        String secondNameStr = req.getParameter("secondName");
+        String dateStr = req.getParameter("date");
+        String phoneNumberStr = req.getParameter("phoneNumber");
+        String loginStr = req.getParameter("login");
+        String passStr = req.getParameter("password");
+        String query = "INSERT INTO users (Surname, name, secondName, dateOfBirth, phoneNumber, login, password, isManager) \n" +
+                "   VALUES ('" + surnameStr + "', '" + nameStr + "', '" + secondNameStr + "', '" + dateStr + "', '" + phoneNumberStr +
+                "', '" + loginStr + "', '" + passStr + "', " + 1 + ")";
         System.out.println("Connect = " + c);
+        Statement statement = null;
         try {
-            Statement statement = c.createStatement();
+            statement = c.createStatement();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        // statement.executeUpdate(query);
-        System.out.println("Adding to database");
+        try {
+            assert statement != null;
+            statement.executeUpdate(query);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        System.out.println("Adding a manager to database");
     }
-
 }
+

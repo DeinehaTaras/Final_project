@@ -12,8 +12,8 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(value = "/mainUser")
-public class MainUser extends HttpServlet {
+@WebServlet (value = "/mainManager")
+public class MainManager extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
         int number = 4;
@@ -57,11 +57,9 @@ public class MainUser extends HttpServlet {
             req.setAttribute("status" + (i + 1 - brandNum), cars.get(i).getStatus());
         }
         try {
-            req.getRequestDispatcher("/mainUser.jsp").forward(req, resp);
+            req.getRequestDispatcher("/mainManager.jsp").forward(req, resp);
         } catch (ServletException | IOException e) {
             e.printStackTrace();
         }
     }
 }
-
-

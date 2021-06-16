@@ -27,11 +27,11 @@
         top: 225px;
         left:370px;
         font-size: large">Rental time (in hours): </label>
-    <input type="text" name="time" id="time" value="" class=c3 required>
+    <input type="number" name="time" id="time" value="" class=c3 required>
 
-    <input type="checkbox" style=" position: fixed; top: 283px; left: 596px" id="driver" name="driver" value="">
-    <label for="driver" style=" position: fixed; top: 284px; left: 619px">With driver (5$/hour) </label><br>
-    <input type="checkbox" style=" position: fixed; top: 312px; left: 596px" id="driver2" name="driver2" value="">
+    <input type="checkbox" style=" position: fixed; top: 283px; left: 596px" id="driver1" name="driver1" value="driver1">
+    <label for="driver1" style=" position: fixed; top: 284px; left: 619px">With driver (5$/hour) </label><br>
+    <input type="checkbox" style=" position: fixed; top: 312px; left: 596px" id="driver2" name="driver2" value="driver2">
     <label for="driver2" style=" position: fixed; top: 312px; left: 619px">Without driver</label><br>
     <input type="submit" name="rent" class=c4 value="Rent ">
 </form>

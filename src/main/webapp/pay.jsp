@@ -2,14 +2,15 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Car rental | order completed</title>
+    <title>Car rental | pay</title>
 </head>
 <body>
-<h1 align="center">Thank you for the order. Our manager will contact you shortly </h1>
+<h1 align="center">Price: ${price}$</h1>
 
-<form action="mainUser" method="post">
-    <input type="submit" name="submit" class=c value="Back to home">
+<form action = "thxForOrder.jsp" method="post">
+    <input type="submit" name="pay" class=c value="Pay">
 </form>
+
 <style>
     .c {
         font-weight: 800;
@@ -20,6 +21,7 @@
         height: 55px;
         width: 250px
     }
+
 </style>
 </body>
 </html>

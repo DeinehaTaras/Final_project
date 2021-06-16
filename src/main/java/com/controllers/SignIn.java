@@ -19,17 +19,36 @@ public class SignIn extends HttpServlet {
         String loginStr = req.getParameter("login");
         DAOImpl dao = new DAOImpl();
         boolean flag = false;
-        flag = dao.login(req, resp);
+        HttpSession session = req.getSession();
+        flag = dao.login(req, resp, session);
         if (flag) {
-            HttpSession session = req.getSession();
             session.setAttribute("userName", loginStr);
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/mainUser");
-            try {
-                dispatcher.forward(req, resp);
-            } catch (ServletException | IOException e) {
-                e.printStackTrace();
+
+            if (Integer.parseInt(session.getAttribute("admin").toString())==1) {
+                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/mainAdmin");
+                try {
+                    dispatcher.forward(req, resp);
+                } catch (ServletException | IOException e) {
+                    e.printStackTrace();
+                }
+            } else if(Integer.parseInt(session.getAttribute("manager").toString())==1) {
+                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/mainManager");
+                try {
+                    dispatcher.forward(req, resp);
+                } catch (ServletException | IOException e) {
+                    e.printStackTrace();
+                }
             }
-        } else {
+            else
+            {
+                try {
+                    RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/mainUser");
+                    dispatcher.forward(req, resp);
+                } catch (IOException | ServletException e) {
+                    e.printStackTrace();
+                }
+            }
+        }else {
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/choice.jsp");
             try {
                 dispatcher.forward(req, resp);

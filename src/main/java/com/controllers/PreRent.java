@@ -1,8 +1,6 @@
 package com.controllers;
 
-import com.DAO.OrderDAOImpl;
 
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -10,20 +8,21 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-
-@WebServlet(value = "/rent")
-public class Rent extends HttpServlet {
+@WebServlet(value ="/preRent")
+public class PreRent extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
+        System.out.println("preRent#doPost");
         HttpSession session = req.getSession();
-        System.out.println("Rent#doPost");
-        OrderDAOImpl dao = new OrderDAOImpl();
-        dao.makeOrder(req, resp, session);
+        session.setAttribute("rent1Val", req.getParameter("rent1"));
+        session.setAttribute("rent2Val", req.getParameter("rent2"));
+        session.setAttribute("rent3Val", req.getParameter("rent3"));
+        session.setAttribute("rent4Val", req.getParameter("rent4"));
 
         try {
-            req.getRequestDispatcher("/pay.jsp").forward(req, resp);
-        } catch (ServletException | IOException e) {
+            resp.sendRedirect("rent.jsp");
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

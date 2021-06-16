@@ -14,16 +14,34 @@
     <div class="header__logo">
         <h1 class="logo__text">CAR<span class="logo__text--grey">rental</span></h1>
     </div>
+    <form action="addCar.jsp" method="post">
+        <button class="car__button" name="adminButton1" value="rent1">Add car</button>
+    </form>
+    <form action="removeCar.jsp" method="post">
+        <button class="car__button" name="adminButton2" value="rent1">Remove car</button>
+    </form>
+    <form action="modifyCar.jsp" method="post">
+        <button class="car__button" name="adminButton3" value="rent1">Modify car info</button>
+    </form>
+    <form action="banUser.jsp" method="post">
+        <button class="car__button" name="adminButton4" value="rent1">Ban user</button>
+    </form>
+    <form action="unbanUser.jsp" method="post">
+        <button class="car__button" name="adminButton5" value="rent1">Unban user</button>
+    </form>
+    <form action="addManager.jsp" method="post">
+        <button class="car__button" name="rent1" value="rent1">Add manager</button>
+    </form>
     <div class="header__auth">
-       <div class="userName">
-           <img src=images/user.png alt="user" class="user__image"> ${userName}
-       </div>
+        <div class="userName">
+            <img src=images/user.png alt="user" class="user__image"> ${userName}
+        </div>
     </div>
 </header>
 
 <main class="main">
     <div class="main__pagination">
-        <form action="mainUser" method="post">
+        <form action="mainAdmin" method="post">
             <ul class="pagination__list">
                 <button name="pageNum1" id="pageNum1" value="1" class="pagination__item ${active__item1}">1</button>
                 <button name="pageNum2" id="pageNum2" value="2" class="pagination__item ${active__item2}">2</button>
@@ -110,3 +128,4 @@
 </div>
 </body>
 </html>
+

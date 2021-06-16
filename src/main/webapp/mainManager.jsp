@@ -2,7 +2,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <meta charset="UTF-8">
     <title>Car rental | Home</title>
     <link rel="stylesheet" href="style.css">
@@ -14,16 +13,22 @@
     <div class="header__logo">
         <h1 class="logo__text">CAR<span class="logo__text--grey">rental</span></h1>
     </div>
+    <form action="approveOrDecline.jsp" method="post">
+        <button class="car__button" name="managerButton1" value="rent1">Approve orders</button>
+    </form>
+    <form action="takeOrFine.jsp" method="post">
+        <button class="car__button" name="managerButton2" value="rent1">Take cars</button>
+    </form>
     <div class="header__auth">
-       <div class="userName">
-           <img src=images/user.png alt="user" class="user__image"> ${userName}
-       </div>
+        <div class="userName">
+            <img src=images/user.png alt="user" class="user__image"> ${userName}
+        </div>
     </div>
 </header>
 
 <main class="main">
     <div class="main__pagination">
-        <form action="mainUser" method="post">
+        <form action="mainAdmin" method="post">
             <ul class="pagination__list">
                 <button name="pageNum1" id="pageNum1" value="1" class="pagination__item ${active__item1}">1</button>
                 <button name="pageNum2" id="pageNum2" value="2" class="pagination__item ${active__item2}">2</button>
@@ -110,3 +115,4 @@
 </div>
 </body>
 </html>
+
