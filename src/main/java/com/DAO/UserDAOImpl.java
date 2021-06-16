@@ -3,27 +3,28 @@ package com.DAO;
 import com.connection.ConnectionDB;
 import com.entity.Car;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-public class DAOImpl {
+public class UserDAOImpl {
     private static Connection c;
 
-    public DAOImpl() {
+    public UserDAOImpl() {
         ConnectionDB connectionDB = new ConnectionDB();
         c = connectionDB.getConnection();
     }
 
-    public static void registration(HttpServletRequest req, HttpServletResponse resp) {
+    public void registration(HttpServletRequest req, HttpServletResponse resp) {
         try {
             req.setCharacterEncoding("UTF-8");
         } catch (UnsupportedEncodingException e) {
@@ -55,7 +56,7 @@ public class DAOImpl {
         System.out.println("Adding to database");
     }
 
-    public static boolean login(HttpServletRequest req, HttpServletResponse resp, HttpSession session) {
+    public boolean login(HttpServletRequest req, HttpServletResponse resp, HttpSession session) {
         String loginStr = req.getParameter("login");
         String passStr = req.getParameter("password");
         String query = "SELECT * FROM users WHERE login = '" + loginStr + "'";
@@ -73,6 +74,11 @@ public class DAOImpl {
         System.out.println("Retrieving data from database...");
         try {
             while (resultSet.next()) {
+                int ban = Integer.parseInt(resultSet.getString("isBanned"));
+                if(ban==1){
+                    req.getRequestDispatcher("/youWasBanned.jsp").forward(req, resp);
+
+                }
                 if (resultSet.getString("login").equals(loginStr) && resultSet.getString("password").equals(passStr)) {
                     session.setAttribute("admin", resultSet.getString("isAdmin"));
                     session.setAttribute("manager", resultSet.getString("isManager"));
@@ -82,6 +88,10 @@ public class DAOImpl {
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         return false;
     }
@@ -123,7 +133,7 @@ public class DAOImpl {
         return carList;
     }
 
-    public static void ban(HttpServletRequest req, HttpServletResponse resp) {
+    public void ban(HttpServletRequest req, HttpServletResponse resp) {
     int userId = Integer.parseInt(req.getParameter("userId"));
     String query = "UPDATE users SET isBanned = " + 1 + " WHERE userId = " + userId;
         Statement statement = null;
@@ -141,7 +151,7 @@ public class DAOImpl {
         System.out.println("Banning user in database");
     }
 
-    public static void unban(HttpServletRequest req, HttpServletResponse resp) {
+    public void unban(HttpServletRequest req, HttpServletResponse resp) {
         int userId = Integer.parseInt(req.getParameter("userId"));
         String query = "UPDATE users SET isBanned = " + 0 + " WHERE userId = " + userId;
         Statement statement = null;
@@ -159,7 +169,7 @@ public class DAOImpl {
         System.out.println("Unbanning user in database");
     }
 
-    public static void appoint(HttpServletRequest req, HttpServletResponse resp) {
+    public void appoint(HttpServletRequest req, HttpServletResponse resp) {
         int userId = Integer.parseInt(req.getParameter("userId"));
         String query = "UPDATE users SET isManager = " + 1 + " WHERE userId = " + userId;
         Statement statement = null;
@@ -177,7 +187,7 @@ public class DAOImpl {
         System.out.println("Appointing a manager");
     }
 
-    public static void createManager(HttpServletRequest req, HttpServletResponse resp) {
+    public void createManager(HttpServletRequest req, HttpServletResponse resp) {
         try {
             req.setCharacterEncoding("UTF-8");
         } catch (UnsupportedEncodingException e) {

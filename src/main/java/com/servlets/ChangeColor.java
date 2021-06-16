@@ -1,6 +1,6 @@
-package com.controllers;
+package com.servlets;
 
-import com.DAO.DAOImpl;
+import com.DAO.CarDAOImpl;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,13 +10,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(value ="/banUser")
-public class BanUser extends HttpServlet {
-
+@WebServlet(value ="/changeColor")
+public class ChangeColor extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
-        DAOImpl dao = new DAOImpl();
-        dao.ban(req, resp);
+        CarDAOImpl dao = new CarDAOImpl();
+        dao.changeColor(req, resp);
         try {
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/mainAdmin");
             dispatcher.forward(req, resp);

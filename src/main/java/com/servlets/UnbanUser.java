@@ -1,6 +1,6 @@
-package com.controllers;
+package com.servlets;
 
-import com.DAO.CarDAOImpl;
+import com.DAO.UserDAOImpl;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,13 +10,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(value = "/removeCar")
-public class removeCar extends HttpServlet {
+@WebServlet(value = "/unbanUser")
+public class UnbanUser extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
-        CarDAOImpl dao = new CarDAOImpl();
-        dao.removeCar(req, resp);
+        UserDAOImpl dao = new UserDAOImpl();
+        dao.unban(req, resp);
         try {
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/mainAdmin");
             dispatcher.forward(req, resp);

@@ -1,6 +1,6 @@
-package com.controllers;
+package com.servlets;
 
-import com.DAO.OrderDAOImpl;
+import com.DAO.UserDAOImpl;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,14 +10,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(value ="/declineOrder")
-public class DeclineOrder extends HttpServlet {
+@WebServlet(value ="/banUser")
+public class BanUser extends HttpServlet {
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
-        OrderDAOImpl dao = new OrderDAOImpl();
-        dao.decline(req, resp);
+        UserDAOImpl dao = new UserDAOImpl();
+        dao.ban(req, resp);
         try {
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/mainManager");
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/mainAdmin");
             dispatcher.forward(req, resp);
         } catch (IOException | ServletException e) {
             e.printStackTrace();

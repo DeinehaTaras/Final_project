@@ -1,4 +1,6 @@
-package com.controllers;
+package com.servlets;
+
+import com.DAO.OrderDAOImpl;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,10 +10,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(value = "/giveFine")
-public class GiveFine extends HttpServlet {
+@WebServlet(value ="/declineOrder")
+public class DeclineOrder extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
+        OrderDAOImpl dao = new OrderDAOImpl();
+        dao.decline(req);
         try {
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/mainManager");
             dispatcher.forward(req, resp);

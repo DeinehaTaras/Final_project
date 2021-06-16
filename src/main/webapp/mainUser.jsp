@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page contentType="text/html; charset = UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,10 +29,23 @@
                 <button name="pageNum1" id="pageNum1" value="1" class="pagination__item ${active__item1}">1</button>
                 <button name="pageNum2" id="pageNum2" value="2" class="pagination__item ${active__item2}">2</button>
                 <button name="pageNum3" id="pageNum3" value="2" class="pagination__item ${active__item3}">3</button>
+                <form action="addCar.jsp" method="post">
+                    <button class="car__button" name="sortButton1" value="sort1">Sort A-Z</button>
+                    <div>   </div>
+                </form>
+                <form action="addCar.jsp" method="post">
+                    <button class="car__button" name="sortButton2" value="sort2">Sort by price (cheap to expensive)</button>
+                    <div>   </div>
+                </form>
+                <form action="addCar.jsp" method="post">
+                    <button class="car__button" name="sortButton3" value="sort3">Sort by class comfort (A-F)</button>
+                    <div>   </div>
+                </form>
             </ul>
         </form>
     </div>
     <div class="main__cars">
+        <c:if test ="${counter > 0}">
         <div class="car">
             <div class="car__logo">
                 <img src=images/${image1} alt="car" class="car__image">
@@ -50,6 +64,7 @@
                 </form>
             </div>
         </div>
+        </c:if>
         <div class="car">
             <div class="car__logo">
                 <img src=images/${image2} alt="car" class="car__image">
@@ -86,6 +101,7 @@
                 </form>
             </div>
         </div>
+     <c:if test ="${counter > 3}">
         <div class="car">
             <div class="car__logo">
                 <img src=images/${image4} alt="car" class="car__image">
@@ -104,6 +120,7 @@
                 </form>
             </div>
         </div>
+     </c:if>
     </div>
 </main>
 

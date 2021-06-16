@@ -1,9 +1,7 @@
-package com.controllers;
+package com.servlets;
 
-import com.DAO.CarDAOImpl;
 import com.DAO.OrderDAOImpl;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,19 +10,21 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebServlet(value ="/addCar")
-public class AddCar extends HttpServlet {
+
+@WebServlet(value = "/rent")
+public class Rent extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
         HttpSession session = req.getSession();
         System.out.println("Rent#doPost");
-        CarDAOImpl dao = new CarDAOImpl();
-        dao.addCar(req, resp, session);
+
+        OrderDAOImpl dao = new OrderDAOImpl();
+        dao.makeOrder(req, resp, session);
+
         try {
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/mainAdmin");
-            dispatcher.forward(req, resp);
-        } catch (IOException | ServletException e) {
+            req.getRequestDispatcher("/pay.jsp").forward(req, resp);
+        } catch (ServletException | IOException e) {
             e.printStackTrace();
         }
     }

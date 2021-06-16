@@ -1,6 +1,6 @@
-package com.controllers;
+package com.servlets;
 
-import com.DAO.DAOImpl;
+import com.DAO.UserDAOImpl;
 import com.entity.Car;
 
 import javax.servlet.ServletException;
@@ -43,7 +43,7 @@ public class MainAdmin extends HttpServlet{
             session.removeAttribute("active__item2");
             session.removeAttribute("active__item3");
         }
-        DAOImpl dao = new DAOImpl();
+        UserDAOImpl dao = new UserDAOImpl();
         List<Car> cars = null;
         cars = dao.checkCars();
         for (int i = number - 4; i < number; i++) {

@@ -1,6 +1,6 @@
-package com.controllers;
+package com.servlets;
 
-import com.DAO.DAOImpl;
+import com.DAO.UserDAOImpl;
 import com.entity.Car;
 
 import javax.servlet.ServletException;
@@ -12,12 +12,18 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet (value = "/mainManager")
-public class MainManager extends HttpServlet {
+@WebServlet(value = "/mainUser")
+public class MainUser extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
         int number = 4;
         int brandNum = 0;
+        int minus = 4;
+
+        UserDAOImpl dao = new UserDAOImpl();
+        List<Car> cars = null;
+        cars = dao.checkCars();
+
         HttpSession session = req.getSession();
         String pageNum1 = req.getParameter("pageNum1");
         String pageNum2 = req.getParameter("pageNum2");
@@ -33,7 +39,9 @@ public class MainManager extends HttpServlet {
             session.removeAttribute("active__item1");
             session.removeAttribute("active__item3");
         } else if (pageNum3 != null) {
-            number = 12;
+            number = cars.size();
+            minus = cars.size() % 4;
+            if(minus==0) minus =4;
             brandNum = 8;
             session.setAttribute("active__item3", "pagination__item--active");
             session.removeAttribute("active__item1");
@@ -43,10 +51,8 @@ public class MainManager extends HttpServlet {
             session.removeAttribute("active__item2");
             session.removeAttribute("active__item3");
         }
-        DAOImpl dao = new DAOImpl();
-        List<Car> cars = null;
-        cars = dao.checkCars();
-        for (int i = number - 4; i < number; i++) {
+        int counter =0;
+        for (int i = number - minus; i < number; i++) {
             req.setAttribute("brand" + (i + 1 - brandNum), cars.get(i).getBrand());
             req.setAttribute("model" + (i + 1 - brandNum), cars.get(i).getModel());
             req.setAttribute("year" + (i + 1 - brandNum), cars.get(i).getYear());
@@ -55,11 +61,15 @@ public class MainManager extends HttpServlet {
             req.setAttribute("image" + (i + 1 - brandNum), cars.get(i).getImage());
             req.setAttribute("comfortClass" + (i + 1 - brandNum), cars.get(i).getComfortClass());
             req.setAttribute("status" + (i + 1 - brandNum), cars.get(i).getStatus());
+            counter++;
         }
+        session.setAttribute("counter", counter);
         try {
-            req.getRequestDispatcher("/mainManager.jsp").forward(req, resp);
+            req.getRequestDispatcher("/mainUser.jsp").forward(req, resp);
         } catch (ServletException | IOException e) {
             e.printStackTrace();
         }
     }
 }
+
+

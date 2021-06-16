@@ -1,7 +1,6 @@
-package com.controllers;
+package com.servlets;
 
-import com.DAO.DAOImpl;
-import com.DAO.OrderDAOImpl;
+import com.DAO.UserDAOImpl;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,17 +10,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(value = "/approveOrder")
-public class approveOrder extends HttpServlet {
+@WebServlet(value = "/registration")
+public class SignUp extends HttpServlet {
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
-        OrderDAOImpl dao = new OrderDAOImpl();
-        dao.approve(req, resp);
+        UserDAOImpl dao = new UserDAOImpl();
         try {
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/mainManager");
+            dao.registration(req, resp);
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/index.jsp");
             dispatcher.forward(req, resp);
-        } catch (IOException | ServletException e) {
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
 }

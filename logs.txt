@@ -1,0 +1,36 @@
+
+2021-06-16 20:30:18 INFO  ConnectionDB:22 - Connect to database: jdbc:mysql://localhost:3306/carRental?
+2021-06-16 20:30:22 INFO  SignIn:62 - vika logging
+2021-06-16 20:30:29 INFO  ConnectionDB:22 - Connect to database: jdbc:mysql://localhost:3306/carRental?
+2021-06-16 20:30:30 INFO  ConnectionDB:22 - Connect to database: jdbc:mysql://localhost:3306/carRental?
+2021-06-16 20:30:31 INFO  SignIn:62 - vika logging
+2021-06-16 20:30:35 INFO  ConnectionDB:22 - Connect to database: jdbc:mysql://localhost:3306/carRental?
+2021-06-16 20:30:36 INFO  ConnectionDB:22 - Connect to database: jdbc:mysql://localhost:3306/carRental?
+2021-06-16 20:30:53 INFO  ConnectionDB:22 - Connect to database: jdbc:mysql://localhost:3306/carRental?
+2021-06-16 20:30:54 INFO  ConnectionDB:112 - Adding order to database
+2021-06-16 20:30:54 INFO  ConnectionDB:123 - Update car info
+2021-06-16 20:30:54 INFO  ConnectionDB:135 - Adding passport info to database
+2021-06-16 20:31:03 INFO  ConnectionDB:22 - Connect to database: jdbc:mysql://localhost:3306/carRental?
+2021-06-16 20:31:05 INFO  ConnectionDB:22 - Connect to database: jdbc:mysql://localhost:3306/carRental?
+2021-06-16 20:31:18 INFO  ConnectionDB:22 - Connect to database: jdbc:mysql://localhost:3306/carRental?
+2021-06-16 20:31:19 INFO  ConnectionDB:112 - Adding order to database
+2021-06-16 20:31:19 INFO  ConnectionDB:123 - Update car info
+2021-06-16 20:31:19 INFO  ConnectionDB:135 - Adding passport info to database
+2021-06-16 20:31:22 INFO  ConnectionDB:22 - Connect to database: jdbc:mysql://localhost:3306/carRental?
+2021-06-16 20:34:32 INFO  ConnectionDB:22 - Connect to database: jdbc:mysql://localhost:3306/carRental?
+2021-06-16 20:34:36 INFO  ConnectionDB:22 - Connect to database: jdbc:mysql://localhost:3306/carRental?
+2021-06-16 20:34:38 INFO  SignIn:62 - vika logging
+2021-06-16 20:35:02 INFO  ConnectionDB:22 - Connect to database: jdbc:mysql://localhost:3306/carRental?
+2021-06-16 20:35:02 INFO  ConnectionDB:110 - Adding order to database
+2021-06-16 20:35:03 INFO  ConnectionDB:121 - Update car info
+2021-06-16 20:35:03 INFO  ConnectionDB:133 - Adding passport info to database
+2021-06-16 20:35:07 INFO  ConnectionDB:22 - Connect to database: jdbc:mysql://localhost:3306/carRental?
+2021-06-16 20:35:43 INFO  ConnectionDB:22 - Connect to database: jdbc:mysql://localhost:3306/carRental?
+2021-06-16 20:35:43 INFO  ConnectionDB:22 - Connect to database: jdbc:mysql://localhost:3306/carRental?
+2021-06-16 20:35:44 INFO  SignIn:62 - anton logging
+2021-06-16 20:36:02 INFO  ConnectionDB:22 - Connect to database: jdbc:mysql://localhost:3306/carRental?
+2021-06-16 20:36:02 INFO  ConnectionDB:22 - Connect to database: jdbc:mysql://localhost:3306/carRental?
+2021-06-16 20:36:34 INFO  ConnectionDB:22 - Connect to database: jdbc:mysql://localhost:3306/carRental?
+2021-06-16 20:36:34 INFO  ConnectionDB:22 - Connect to database: jdbc:mysql://localhost:3306/carRental?
+2021-06-16 20:37:10 INFO  ConnectionDB:22 - Connect to database: jdbc:mysql://localhost:3306/carRental?
+2021-06-16 20:37:10 INFO  ConnectionDB:22 - Connect to database: jdbc:mysql://localhost:3306/carRental?

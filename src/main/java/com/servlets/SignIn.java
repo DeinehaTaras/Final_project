@@ -1,6 +1,6 @@
-package com.controllers;
+package com.servlets;
 
-import com.DAO.DAOImpl;
+import com.DAO.UserDAOImpl;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,14 +10,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import org.apache.log4j.Logger;
 
 @WebServlet(value = "/login")
 public class SignIn extends HttpServlet {
+    private static final Logger log = Logger.getLogger(SignIn.class);
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
         System.out.println("doPost");
         String loginStr = req.getParameter("login");
-        DAOImpl dao = new DAOImpl();
+        UserDAOImpl dao = new UserDAOImpl();
         boolean flag = false;
         HttpSession session = req.getSession();
         flag = dao.login(req, resp, session);
@@ -56,5 +59,6 @@ public class SignIn extends HttpServlet {
                 e.printStackTrace();
             }
         }
+        log.info(loginStr + " logging");
     }
 }

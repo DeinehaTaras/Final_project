@@ -1,6 +1,6 @@
-package com.controllers;
+package com.servlets;
 
-import com.DAO.DAOImpl;
+import com.DAO.UserDAOImpl;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,21 +10,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(value = "/registration")
-public class SignUp extends HttpServlet {
-
+@WebServlet(value ="/createManager")
+public class CreateManager extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
-        DAOImpl dao = new DAOImpl();
+        UserDAOImpl dao = new UserDAOImpl();
+        dao.createManager(req, resp);
         try {
-            dao.registration(req, resp);
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/index.jsp");
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/mainAdmin");
             dispatcher.forward(req, resp);
-        } catch (ServletException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (IOException | ServletException e) {
             e.printStackTrace();
         }
     }
-
 }

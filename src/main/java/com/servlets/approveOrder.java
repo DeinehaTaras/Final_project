@@ -1,7 +1,6 @@
-package com.controllers;
+package com.servlets;
 
-import com.DAO.CarDAOImpl;
-
+import com.DAO.OrderDAOImpl;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,14 +9,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(value = "/changePrice")
-public class ChangePrice extends HttpServlet {
+@WebServlet(value = "/approveOrder")
+public class approveOrder extends HttpServlet {
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
-        CarDAOImpl dao = new CarDAOImpl();
-        dao.changePrice(req, resp);
+        OrderDAOImpl dao = new OrderDAOImpl();
+        dao.approve(req);
         try {
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/mainAdmin");
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/mainManager");
             dispatcher.forward(req, resp);
         } catch (IOException | ServletException e) {
             e.printStackTrace();

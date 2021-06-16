@@ -1,4 +1,4 @@
-package com.controllers;
+package com.servlets;
 
 
 import javax.servlet.annotation.WebServlet;
