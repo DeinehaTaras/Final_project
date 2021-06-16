@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class RoleFilter implements Filter {
+
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;
@@ -39,8 +40,7 @@ public class RoleFilter implements Filter {
                 || uri.endsWith("declineOrder.jsp")
                 || uri.endsWith("giveFine.jsp")
                 || uri.endsWith("takeCar.jsp")
-                || uri.endsWith("takeOrFine.jsp")
-                || uri.endsWith("unbanUser.jsp"))) {
+                || uri.endsWith("takeOrFine.jsp"))) {
             httpServletResponse.sendRedirect("index.jsp");
         } else if (user==null && (uri.endsWith("mainUser.jsp")
                 || uri.endsWith("pay.jsp")

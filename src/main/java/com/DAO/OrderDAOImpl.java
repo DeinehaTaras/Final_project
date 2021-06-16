@@ -14,7 +14,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -27,12 +26,13 @@ public class OrderDAOImpl {
         c = connectionDB.getConnection();
     }
 
-    public static void makeOrder(HttpServletRequest req, HttpServletResponse resp, HttpSession session) {
+    public void makeOrder(HttpServletRequest req, HttpServletResponse resp, HttpSession session) {
         try {
             req.setCharacterEncoding("UTF-8");
         } catch (UnsupportedEncodingException e) {
             Logger.getLogger(OrderDAOImpl.class.getName()).log(Level.SEVERE, "UnsupportedEncodingException.", e);
         }
+
         int activePage = 0;
         if (session.getAttribute("active__item2") != null) {
             activePage = 4;
@@ -45,13 +45,13 @@ public class OrderDAOImpl {
         int driver = 0;
         String carId = null;
         if (session.getAttribute("rent1Val") != null) {
-            query1 = "SELECT * FROM cars ORDER BY carId LIMIT 1 OFFSET " + (activePage);
+            query1 = "SELECT * FROM cars ORDER BY " + session.getAttribute("sort") + " LIMIT 1 OFFSET " + (activePage);
         } else if (session.getAttribute("rent2Val") != null) {
-            query1 = "SELECT * FROM cars ORDER BY carId LIMIT 1 OFFSET " + (1 + activePage);
+            query1 = "SELECT * FROM cars ORDER BY " + session.getAttribute("sort") + " LIMIT 1 OFFSET " + (1 + activePage);
         } else if (session.getAttribute("rent3Val") != null) {
-            query1 = "SELECT * FROM cars ORDER BY carId LIMIT 1 OFFSET " + (2 + activePage);
+            query1 = "SELECT * FROM cars ORDER BY " + session.getAttribute("sort") + " LIMIT 1 OFFSET " + (2 + activePage);
         } else if (session.getAttribute("rent4Val") != null) {
-            query1 = "SELECT * FROM cars ORDER BY carId LIMIT 1 OFFSET " + (3 + activePage);
+            query1 = "SELECT * FROM cars ORDER BY " + session.getAttribute("sort") + " LIMIT 1 OFFSET " + (3 + activePage);
         }
         int carStatus;
         try {
@@ -175,7 +175,7 @@ public class OrderDAOImpl {
         LOG.info("Declining an order");
     }
 
-    public static void take(HttpServletRequest req) {
+    public void take(HttpServletRequest req) {
         int carId = 0;
         int orderID = Integer.parseInt(req.getParameter("orderId"));
         String query = "SELECT cars_CarId FROM orders WHERE orderId = " + orderID;
@@ -200,5 +200,19 @@ public class OrderDAOImpl {
             Logger.getLogger(OrderDAOImpl.class.getName()).log(Level.SEVERE, "SQLException.", throwables);
         }
         LOG.info("Getting a car");
+    }
+
+    public void giveAFine(HttpServletRequest req) {
+        int orderId = Integer.parseInt(req.getParameter("orderId"));
+        int fine = Integer.parseInt(req.getParameter("fine"));
+        String query = "UPDATE orders SET Fine = " + fine + " WHERE orderId = " + orderId;
+        try {
+            Statement statement = c.createStatement();
+            assert statement != null;
+            statement.executeUpdate(query);
+        } catch (SQLException throwables) {
+            Logger.getLogger(OrderDAOImpl.class.getName()).log(Level.SEVERE, "SQLException.", throwables);
+        }
+        LOG.info("Writing a fine to database");
     }
 }

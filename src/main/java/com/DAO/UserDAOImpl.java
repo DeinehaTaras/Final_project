@@ -15,8 +15,12 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class UserDAOImpl {
+
+    private static final org.apache.log4j.Logger LOG = org.apache.log4j.Logger.getLogger(ConnectionDB.class);
     private static Connection c;
 
     public UserDAOImpl() {
@@ -24,11 +28,11 @@ public class UserDAOImpl {
         c = connectionDB.getConnection();
     }
 
-    public void registration(HttpServletRequest req, HttpServletResponse resp) {
+    public void registration(HttpServletRequest req) {
         try {
             req.setCharacterEncoding("UTF-8");
         } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
+            Logger.getLogger(CarDAOImpl.class.getName()).log(Level.SEVERE, "UnsupportedEncodingException.", e);
         }
         String surnameStr = req.getParameter("surname");
         String nameStr = req.getParameter("name");
@@ -40,20 +44,15 @@ public class UserDAOImpl {
         String query = "INSERT INTO users (Surname, name, secondName, dateOfBirth, phoneNumber, login, password) \n" +
                 "   VALUES ('" + surnameStr + "', '" + nameStr + "', '" + secondNameStr + "', '" + dateStr + "', '" + phoneNumberStr +
                 "', '" + loginStr + "', '" + passStr + "')";
-        System.out.println("Connect = " + c);
-        Statement statement = null;
+        Statement statement;
         try {
             statement = c.createStatement();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-        try {
             assert statement != null;
             statement.executeUpdate(query);
         } catch (SQLException throwables) {
-            throwables.printStackTrace();
+            Logger.getLogger(CarDAOImpl.class.getName()).log(Level.SEVERE, "SQLException.", throwables);
         }
-        System.out.println("Adding to database");
+        LOG.info("Adding user to database");
     }
 
     public boolean login(HttpServletRequest req, HttpServletResponse resp, HttpSession session) {
@@ -61,23 +60,21 @@ public class UserDAOImpl {
         String passStr = req.getParameter("password");
         String query = "SELECT * FROM users WHERE login = '" + loginStr + "'";
         System.out.println("Connect = " + c);
-        Statement statement = null;
+        Statement statement;
         ResultSet resultSet = null;
         try {
             statement = c.createStatement();
             assert statement != null;
             resultSet = statement.executeQuery(query);
         } catch (SQLException throwables) {
-            throwables.printStackTrace();
+            Logger.getLogger(CarDAOImpl.class.getName()).log(Level.SEVERE, "SQLException.", throwables);
         }
-
-        System.out.println("Retrieving data from database...");
+        LOG.info("Retrieving user data from database...");
         try {
             while (resultSet.next()) {
                 int ban = Integer.parseInt(resultSet.getString("isBanned"));
-                if(ban==1){
+                if (ban == 1) {
                     req.getRequestDispatcher("/youWasBanned.jsp").forward(req, resp);
-
                 }
                 if (resultSet.getString("login").equals(loginStr) && resultSet.getString("password").equals(passStr)) {
                     session.setAttribute("admin", resultSet.getString("isAdmin"));
@@ -86,17 +83,19 @@ public class UserDAOImpl {
                 } else
                     return false;
             }
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        } catch (ServletException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (SQLException | ServletException | IOException throwables) {
+            Logger.getLogger(CarDAOImpl.class.getName()).log(Level.SEVERE, "Exception.", throwables);
         }
         return false;
     }
 
-    public List<Car> checkCars() {
+    public List<Car> checkCars(HttpSession session) {
+        String sort;
+        try {
+             sort = session.getAttribute("sort").toString();
+        } catch (NullPointerException e){
+            sort = "CarId";
+        }
         List<Car> carList = new ArrayList<>();
         String brandStr;
         String modelStr;
@@ -106,11 +105,11 @@ public class UserDAOImpl {
         String imageStr;
         String classStr;
         int status;
-        String query = "SELECT * FROM cars";
+        String query = "SELECT * FROM cars ORDER BY " + sort;
         try {
             Statement statement = c.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
-            System.out.println("Checking cars...");
+            LOG.info("Checking cars in database");
             while (resultSet.next()) {
                 brandStr = resultSet.getString("brand");
                 modelStr = resultSet.getString("model");
@@ -128,70 +127,55 @@ public class UserDAOImpl {
                             priceStr, imageStr, classStr, "don't free"));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            Logger.getLogger(CarDAOImpl.class.getName()).log(Level.SEVERE, "SQLException.", e);
         }
         return carList;
     }
 
-    public void ban(HttpServletRequest req, HttpServletResponse resp) {
-    int userId = Integer.parseInt(req.getParameter("userId"));
-    String query = "UPDATE users SET isBanned = " + 1 + " WHERE userId = " + userId;
-        Statement statement = null;
+    public void ban(HttpServletRequest req) {
+        int userId = Integer.parseInt(req.getParameter("userId"));
+        String query = "UPDATE users SET isBanned = " + 1 + " WHERE userId = " + userId;
         try {
-            statement = c.createStatement();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-        try {
+            Statement statement = c.createStatement();
             assert statement != null;
             statement.executeUpdate(query);
         } catch (SQLException throwables) {
-            throwables.printStackTrace();
+            Logger.getLogger(CarDAOImpl.class.getName()).log(Level.SEVERE, "SQLException.", throwables);
         }
-        System.out.println("Banning user in database");
+        LOG.info("Banning user in database");
     }
 
-    public void unban(HttpServletRequest req, HttpServletResponse resp) {
+    public void unban(HttpServletRequest req) {
         int userId = Integer.parseInt(req.getParameter("userId"));
         String query = "UPDATE users SET isBanned = " + 0 + " WHERE userId = " + userId;
-        Statement statement = null;
         try {
-            statement = c.createStatement();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-        try {
+            Statement statement = c.createStatement();
             assert statement != null;
             statement.executeUpdate(query);
         } catch (SQLException throwables) {
-            throwables.printStackTrace();
+            Logger.getLogger(CarDAOImpl.class.getName()).log(Level.SEVERE, "SQLException.", throwables);
         }
-        System.out.println("Unbanning user in database");
+        LOG.info("Unbanning user in database");
     }
 
-    public void appoint(HttpServletRequest req, HttpServletResponse resp) {
+    public void appoint(HttpServletRequest req) {
         int userId = Integer.parseInt(req.getParameter("userId"));
         String query = "UPDATE users SET isManager = " + 1 + " WHERE userId = " + userId;
-        Statement statement = null;
         try {
-            statement = c.createStatement();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-        try {
+            Statement statement = c.createStatement();
             assert statement != null;
             statement.executeUpdate(query);
         } catch (SQLException throwables) {
-            throwables.printStackTrace();
+            Logger.getLogger(CarDAOImpl.class.getName()).log(Level.SEVERE, "SQLException.", throwables);
         }
-        System.out.println("Appointing a manager");
+        LOG.info("Appointing a manager");
     }
 
-    public void createManager(HttpServletRequest req, HttpServletResponse resp) {
+    public void createManager(HttpServletRequest req) {
         try {
             req.setCharacterEncoding("UTF-8");
         } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
+            Logger.getLogger(CarDAOImpl.class.getName()).log(Level.SEVERE, "UnsupportedEncodingExceptionption.", e);
         }
         String surnameStr = req.getParameter("surname");
         String nameStr = req.getParameter("name");
@@ -204,19 +188,14 @@ public class UserDAOImpl {
                 "   VALUES ('" + surnameStr + "', '" + nameStr + "', '" + secondNameStr + "', '" + dateStr + "', '" + phoneNumberStr +
                 "', '" + loginStr + "', '" + passStr + "', " + 1 + ")";
         System.out.println("Connect = " + c);
-        Statement statement = null;
         try {
-            statement = c.createStatement();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-        try {
+            Statement statement = c.createStatement();
             assert statement != null;
             statement.executeUpdate(query);
         } catch (SQLException throwables) {
-            throwables.printStackTrace();
+            Logger.getLogger(CarDAOImpl.class.getName()).log(Level.SEVERE, "SQLException.", throwables);
         }
-        System.out.println("Adding a manager to database");
+        LOG.info("Adding a manager to database");
     }
 }
 

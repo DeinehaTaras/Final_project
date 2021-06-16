@@ -17,7 +17,7 @@ public class appointManager extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
         UserDAOImpl dao = new UserDAOImpl();
-        dao.appoint(req, resp);
+        dao.appoint(req);
         try {
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/mainAdmin");
             dispatcher.forward(req, resp);

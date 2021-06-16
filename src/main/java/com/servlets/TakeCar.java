@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @WebServlet(value ="/takeCar")
 public class TakeCar extends HttpServlet {
@@ -20,7 +22,7 @@ public class TakeCar extends HttpServlet {
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/mainManager");
             dispatcher.forward(req, resp);
         } catch (IOException | ServletException e) {
-            e.printStackTrace();
+            Logger.getLogger(TakeCar.class.getName()).log(Level.SEVERE, "Exception.", e);
         }
     }
 }

@@ -9,18 +9,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @WebServlet(value = "/changePrice")
 public class ChangePrice extends HttpServlet {
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
         CarDAOImpl dao = new CarDAOImpl();
-        dao.changePrice(req, resp);
+        dao.changePrice(req);
         try {
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/mainAdmin");
             dispatcher.forward(req, resp);
         } catch (IOException | ServletException e) {
-            e.printStackTrace();
+            Logger.getLogger(ChangePrice.class.getName()).log(Level.SEVERE, "Exception.", e);
         }
     }
 }

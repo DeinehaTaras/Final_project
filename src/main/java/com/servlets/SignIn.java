@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.logging.Level;
+
 import org.apache.log4j.Logger;
 
 @WebServlet(value = "/login")
@@ -18,10 +20,9 @@ public class SignIn extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
-        System.out.println("doPost");
         String loginStr = req.getParameter("login");
         UserDAOImpl dao = new UserDAOImpl();
-        boolean flag = false;
+        boolean flag;
         HttpSession session = req.getSession();
         flag = dao.login(req, resp, session);
         if (flag) {
@@ -32,14 +33,14 @@ public class SignIn extends HttpServlet {
                 try {
                     dispatcher.forward(req, resp);
                 } catch (ServletException | IOException e) {
-                    e.printStackTrace();
+                    java.util.logging.Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, "Exception.", e);
                 }
             } else if(Integer.parseInt(session.getAttribute("manager").toString())==1) {
                 RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/mainManager");
                 try {
                     dispatcher.forward(req, resp);
                 } catch (ServletException | IOException e) {
-                    e.printStackTrace();
+                    java.util.logging.Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, "Exception.", e);
                 }
             }
             else
@@ -48,7 +49,7 @@ public class SignIn extends HttpServlet {
                     RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/mainUser");
                     dispatcher.forward(req, resp);
                 } catch (IOException | ServletException e) {
-                    e.printStackTrace();
+                    java.util.logging.Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, "Exception.", e);
                 }
             }
         }else {
@@ -56,7 +57,7 @@ public class SignIn extends HttpServlet {
             try {
                 dispatcher.forward(req, resp);
             } catch (ServletException | IOException e) {
-                e.printStackTrace();
+                java.util.logging.Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, "Exception.", e);
             }
         }
         log.info(loginStr + " logging");

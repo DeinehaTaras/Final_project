@@ -3,7 +3,6 @@ package com.DAO;
 import com.connection.ConnectionDB;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.UnsupportedEncodingException;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -47,7 +46,7 @@ public class CarDAOImpl {
         LOG.info("Adding car to database");
     }
 
-    public static void removeCar(HttpServletRequest req, HttpServletResponse resp) {
+    public void removeCar(HttpServletRequest req) {
         int carId = Integer.parseInt(req.getParameter("carId"));
         String query = "DELETE FROM cars WHERE CarId = " + carId;
         try {
@@ -60,7 +59,7 @@ public class CarDAOImpl {
         LOG.info("Removing car from database");
     }
 
-    public static void changeColor(HttpServletRequest req, HttpServletResponse resp) {
+    public void changeColor(HttpServletRequest req) {
         try {
             req.setCharacterEncoding("UTF-8");
         } catch (UnsupportedEncodingException e) {
@@ -77,16 +76,15 @@ public class CarDAOImpl {
             statement.executeUpdate(query);
         } catch (SQLException throwables) {
             Logger.getLogger(CarDAOImpl.class.getName()).log(Level.SEVERE, "SQLException.", throwables);
-
         }
         LOG.info("Changing color");
     }
 
-    public static void changePrice(HttpServletRequest req, HttpServletResponse resp) {
+    public void changePrice(HttpServletRequest req) {
         try {
             req.setCharacterEncoding("UTF-8");
         } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
+            Logger.getLogger(CarDAOImpl.class.getName()).log(Level.SEVERE, "UnsupportedEncodingException.", e);
         }
         int priceStr = Integer.parseInt(req.getParameter("price"));
         int carId = Integer.parseInt(req.getParameter("carId"));
@@ -97,16 +95,16 @@ public class CarDAOImpl {
             assert statement != null;
             statement.executeUpdate(query);
         } catch (SQLException throwables) {
-            throwables.printStackTrace();
+            Logger.getLogger(CarDAOImpl.class.getName()).log(Level.SEVERE, "SQLException.", throwables);
         }
         LOG.info("Changing price");
     }
 
-    public static void changeImage(HttpServletRequest req, HttpServletResponse resp) {
+    public void changeImage(HttpServletRequest req) {
         try {
             req.setCharacterEncoding("UTF-8");
         } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
+            Logger.getLogger(CarDAOImpl.class.getName()).log(Level.SEVERE, "UnsupportedEncodingException.", e);
         }
         String imgaeStr = req.getParameter("image");
         int carId = Integer.parseInt(req.getParameter("carId"));
@@ -117,8 +115,12 @@ public class CarDAOImpl {
             assert statement != null;
             statement.executeUpdate(query);
         } catch (SQLException throwables) {
-            throwables.printStackTrace();
+            Logger.getLogger(CarDAOImpl.class.getName()).log(Level.SEVERE, "SQLException.", throwables);
         }
         LOG.info("Changing image");
+    }
+
+    public void sortByPrice(HttpServletRequest req) {
+
     }
 }

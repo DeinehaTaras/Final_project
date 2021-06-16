@@ -7,13 +7,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @WebServlet(value ="/preRent")
 public class PreRent extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
-        System.out.println("preRent#doPost");
         HttpSession session = req.getSession();
         session.setAttribute("rent1Val", req.getParameter("rent1"));
         session.setAttribute("rent2Val", req.getParameter("rent2"));
@@ -23,7 +24,7 @@ public class PreRent extends HttpServlet {
         try {
             resp.sendRedirect("rent.jsp");
         } catch (IOException e) {
-            e.printStackTrace();
+            Logger.getLogger(PreRent.class.getName()).log(Level.SEVERE, "IOException.", e);
         }
     }
 }
