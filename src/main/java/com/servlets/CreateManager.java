@@ -14,6 +14,7 @@ import java.util.logging.Logger;
 
 @WebServlet(value ="/createManager")
 public class CreateManager extends HttpServlet {
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
         UserDAOImpl dao = new UserDAOImpl();

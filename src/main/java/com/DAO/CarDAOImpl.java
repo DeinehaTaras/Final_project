@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 
 public class CarDAOImpl {
 
-    private static final org.apache.log4j.Logger LOG = org.apache.log4j.Logger.getLogger(ConnectionDB.class);
+    private static final org.apache.log4j.Logger LOG = org.apache.log4j.Logger.getLogger(CarDAOImpl.class);
     private static Connection c;
 
     public CarDAOImpl() {

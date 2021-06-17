@@ -14,6 +14,7 @@ import java.util.logging.Logger;
 
 @WebServlet(value ="/declineOrder")
 public class DeclineOrder extends HttpServlet {
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
         OrderDAOImpl dao = new OrderDAOImpl();

@@ -14,6 +14,7 @@ import java.util.logging.Logger;
 
 @WebServlet(value = "/changeImage")
 public class ChangeImage extends HttpServlet {
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
         CarDAOImpl dao = new CarDAOImpl();

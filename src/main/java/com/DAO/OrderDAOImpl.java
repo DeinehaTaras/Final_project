@@ -18,7 +18,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class OrderDAOImpl {
-    private static final org.apache.log4j.Logger LOG = org.apache.log4j.Logger.getLogger(ConnectionDB.class);
+    private static final org.apache.log4j.Logger LOG = org.apache.log4j.Logger.getLogger(OrderDAOImpl.class);
     private static Connection c;
 
     public OrderDAOImpl() {
